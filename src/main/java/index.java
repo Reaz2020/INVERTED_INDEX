@@ -136,21 +136,21 @@ n is the number of documents that contain the term t among the data set*/
         index.forEach((k, v) -> System.out.println("Inverted list  " + k + " = " + v));
     }
 
-    void sortTF_IDFvalues(Map<String, Double> temp){
-        Object[] a = temp.entrySet().toArray();
+    void sortTF_IDFvalues(Map<String, Double> tempTF_IDF){
+        Object[] a = tempTF_IDF.entrySet().toArray();
         Arrays.sort(a, new Comparator() {
             public int compare(Object o1, Object o2) {
                 return ((Map.Entry<String, Double>) o2).getValue()
                         .compareTo(((Map.Entry<String, Double>) o1).getValue());
             }
-        });
-        /*System.out.println(" ");
+        });//tempTF_IDF.forEach((k, v) -> System.out.println("TF_IDF Value for word  " + k + " = " + v));
+       // System.out.println(" ");
         System.out.println(" ");
         for (Object e : a) {
-            System.out.println(" IDF : "+((Map.Entry<String, Double>) e).getKey() + "   "
+            System.out.println("TF_IDF Value for word :"+((Map.Entry<String, Double>) e).getKey() + "   "
                     + ((Map.Entry<String, Double>) e).getValue());
 
-        }System.out.println(" ");*/
+        }System.out.println(" ");
     }
    /* void printTF() {
         System.out.println("TF for all words ");
@@ -168,8 +168,8 @@ n is the number of documents that contain the term t among the data set*/
             }
         }
         //System.out.println(" ---------------------------------------------------------- ");
-        //sortTF_IDFvalues(TF_IDF);
-        TF_IDF.forEach((k, v) -> System.out.println("TF_IDF Value for word  " + k + " = " + v));
+        sortTF_IDFvalues(TF_IDF);
+       // TF_IDF.forEach((k, v) -> System.out.println("TF_IDF Value for word  " + k + " = " + v));
     }
 
     void IDFc() {
