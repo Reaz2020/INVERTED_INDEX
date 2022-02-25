@@ -4,6 +4,10 @@ import java.util.*;
 class Index {
 
 
+
+    Map<Integer, String> tf_idf;
+    ArrayList<Map<String, Double>> TF_IDF_List = new ArrayList();
+    //ArrayList<Map<String, Double>> TF_IDF_ListNew = new ArrayList();
     Map<Integer, String> sources;
     HashMap<String, HashSet<Integer>> index;
     Map<String, Double> IDF_forAllWords = new HashMap<>();
@@ -16,14 +20,10 @@ class Index {
     // ArrayList<String> allWords = new ArrayList();
     //int numberOfFiles = 0;
     int numbeRofDocumentsThatContainThePharseTerm = 0;
-
-
     Index() {
         sources = new HashMap<Integer, String>();
         index = new HashMap<String, HashSet<Integer>>();
     }
-
-
     public void buildIndex(String[] files) {
         int docNo = 1;
         int i = 0;
@@ -58,7 +58,6 @@ class Index {
         index.forEach((k, v) -> System.out.println("Inverted list  " + k + " = " + v));
 
     }
-
     void TF_value_forEachDocument(String fileName, int i) {
 
         ArrayList<String> allWords_forEachDocument = new ArrayList();
@@ -78,8 +77,8 @@ class Index {
         TF(allWords_forEachDocument, i);
 
     }
-
     public void find(String phrase) {
+
         String[] words = phrase.split("\\W+");
         HashSet<Integer> res = new HashSet<Integer>(index.get(words[0].toLowerCase()));
         for (String word : words) {
@@ -97,7 +96,6 @@ class Index {
         }
         System.out.println(phrase + " is in " + numbeRofDocumentsThatContainThePharseTerm + " documents ");
     }
-
     void TF(ArrayList<String> arrayList, int docNo) {
         double tfVlue;
         int totalWordsInTheDocument = arrayList.size();
@@ -119,23 +117,17 @@ class Index {
         System.out.println("                   TF_IDF ");
         TF_IDF(TF);
         System.out.println("  ");
-
-
-
-         /*tf(t,d) = n/N
+        /*tf(t,d) = n/N
 n is the number of times term t appears in the document d.
-N is the total number of terms in the document d. (https://medium.com/@adityamdk/tf-idf-implementation-in-java-f6c4d1d97e3b)*/
-
-
-    }
-
+N is the total number of terms in the document d. (https://medium.com/@adityamdk/tf-idf-implementation-in-java-f6c4d1d97e3b)*/}
     /*idf(t,D) = log (N/( n))
 N is the number of documents in the data set.
 n is the number of documents that contain the term t among the data set*/
     void print() {
-        index.forEach((k, v) -> System.out.println("Inverted list  " + k + " = " + v));
+        /*for(int i = 0; i < TF_IDF_List.size(); i++) {
+            System.out.print(",  tf df list for all words “\\n”"+TF_IDF_List.get(i)+"“\\n”");
+        }*/TF_IDF_List.forEach(t -> System.out.println(t));
     }
-
     void sortTF_IDFvalues(Map<String, Double> tempTF_IDF){
         Object[] a = tempTF_IDF.entrySet().toArray();
         Arrays.sort(a, new Comparator() {
@@ -156,22 +148,24 @@ n is the number of documents that contain the term t among the data set*/
         System.out.println("TF for all words ");
         TF_forAllWords.forEach((k, v) -> System.out.println("TF :  " + k + "  " + v));
     }*/
-
     void TF_IDF(Map<String, Double> TF) {
         Map<String, Double> TF_IDF = new HashMap<>();
        // System.out.println("IDF size  " + IDF_forAllWords.size());
+        int i = 0;
         for (String key : TF.keySet()) {
             if (TF.containsKey(key) == IDF_forAllWords.containsKey(key)) {
                 double TF_IDF_value = TF.get(key) * IDF_forAllWords.get(key);
                // System.out.println();
                 TF_IDF.put(key, TF_IDF_value);
+
             }
-        }
+        }TF_IDF_List.add(i,TF_IDF);
+        Collections.reverse(TF_IDF_List);
+
         //System.out.println(" ---------------------------------------------------------- ");
         sortTF_IDFvalues(TF_IDF);
        // TF_IDF.forEach((k, v) -> System.out.println("TF_IDF Value for word  " + k + " = " + v));
     }
-
     void IDFc() {
         double numberOfDocHaveTheWord = 0;
         double numberOfDoc = sources.size();
@@ -193,7 +187,25 @@ n is the number of documents that contain the term t among the data set*/
        // TF.forEach((k, v) -> System.out.println("TF Value for word  " + k + " = " + v));
 
     }
+    void findParse( String a ){
+        /*Map<String, Double> TF_IDF = new HashMap<>();
+        // System.out.println("IDF size  " + IDF_forAllWords.size());
+        int i = 0;
+        for (String key : TF.keySet()) {
+            if (TF.containsKey(key) == IDF_forAllWords.containsKey(key)) {
+                double TF_IDF_value = TF.get(key) * IDF_forAllWords.get(key);
+                // System.out.println();
+                TF_IDF.put(key, TF_IDF_value);
 
+            }*/
+
+        for (int i = 0; i < TF_IDF_List.size(); i++) {
+            if(TF_IDF_List.get(i).containsKey(a))
+                System.out.println("[ Document : "+(i+1)+ "]");
+            else System.out.println("not found");
+        }
+
+    }
     public void TFcalc(String[] files) {
         int docNo = 1;
         for (String fileName : files) {
