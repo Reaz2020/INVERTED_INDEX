@@ -52,12 +52,8 @@ class Index {
             }
             i++;
 
-        }//Creating TF
-        /*for (String fileName : files) {
-            TF_value_forEachDocument(fileName, docNo);
-            docNo++;
-        }*/
-        index.forEach((k, v) -> System.out.println("Inverted list  " + k + " = " + v));
+        }
+       // index.forEach((k, v) -> System.out.println("Inverted list  " + k + " = " + v));
 
     }
     void TF_value_forEachDocument(String fileName, int i) {
@@ -182,7 +178,7 @@ n is the number of documents that contain the term t among the data set*/
 
         }
 
-        IDF_forAllWords.forEach((k, v) -> System.out.println("IDF  = " + k + "= " + v));
+       // IDF_forAllWords.forEach((k, v) -> System.out.println("IDF  = " + k + "= " + v));
        // System.out.println("--------------------------------------------------------------");
         //sortIDFvalues();
        // System.out.println("IDF size  " + IDF_forAllWords.size());
@@ -195,10 +191,10 @@ n is the number of documents that contain the term t among the data set*/
         ArrayList <Double> tempList= new ArrayList<>();
         HashMap<Integer, Double> TF_IDF_ListNew =new LinkedHashMap<>();
 
-
+        int docNO;
         for (int i = 0; i < TF_IDF_List.size(); i++) {
             if(TF_IDF_List.get(i).containsKey(a)){
-                int docNO=(i+1);
+                docNO=i;
                 TF_IDF_ListNew.put(docNO, TF_IDF_List.get(i).get(a));
 
             }
@@ -212,8 +208,8 @@ n is the number of documents that contain the term t among the data set*/
 
     void sortingDocument(HashMap<Integer, Double> tempHashMap){
 
-        Object[] a = tempHashMap.entrySet().toArray();
-        Arrays.sort(a, new Comparator() {
+        Object[] obj = tempHashMap.entrySet().toArray();
+        Arrays.sort(obj, new Comparator() {
             public int compare(Object o1, Object o2) {
                 return ((Map.Entry<Integer, Double>) o2).getValue()
                         .compareTo(((Map.Entry<Integer, Double>) o1).getValue());
@@ -222,14 +218,12 @@ n is the number of documents that contain the term t among the data set*/
         // System.out.println(" ");
 
 
-        System.out.println("[");
-        for (Object e : a) {
+
+        for (Object e : obj) {
             System.out.println("Document no :"+((Map.Entry<Integer, Double>) e).getKey() + "  tf.idf value  "
                     + ((Map.Entry<Integer, Double>) e).getValue());
 
-
-
-        }System.out.println("]");
+        }
 
 
 

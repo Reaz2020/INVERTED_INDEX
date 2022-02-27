@@ -8,7 +8,7 @@ public class Main {
         index.buildIndex(files);
         index.IDFc();
         index.TFcalc(files);
-        System.out.println("Print search phrase: ");
+        System.out.println("Write search phrase: ");
         Scanner sc=new Scanner(System.in);
         String a = sc.nextLine();
         index.findParse(a);
