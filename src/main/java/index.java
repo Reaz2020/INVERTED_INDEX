@@ -194,7 +194,7 @@ n is the number of documents that contain the term t among the data set*/
         int docNO;
         for (int i = 0; i < TF_IDF_List.size(); i++) {
             if(TF_IDF_List.get(i).containsKey(a)){
-                docNO=i;
+                docNO=i+1;
                 TF_IDF_ListNew.put(docNO, TF_IDF_List.get(i).get(a));
 
             }

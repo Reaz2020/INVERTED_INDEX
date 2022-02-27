@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         Index index = new Index();
-        String [] files =new String[]{"C:\\INVERTED_INDEX\\src\\main\\files\\file2","C:\\INVERTED_INDEX\\src\\main\\files\\file1", "C:\\INVERTED_INDEX\\src\\main\\files\\file3"};
+        String [] files =new String[]{"C:\\INVERTED_INDEX\\src\\main\\files\\doc1","C:\\INVERTED_INDEX\\src\\main\\files\\doc2","C:\\INVERTED_INDEX\\src\\main\\files\\doc3"};
         index.buildIndex(files);
         index.IDFc();
         index.TFcalc(files);
