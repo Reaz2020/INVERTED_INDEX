@@ -8,19 +8,9 @@ public class Main {
         index.buildIndex(files);
         index.IDFc();
         index.TFcalc(files);
-        index.print();
-
-
-
-
         System.out.println("Print search phrase: ");
         Scanner sc=new Scanner(System.in);
         String a = sc.nextLine();
-       // BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        //String phrase = in.readLine();
-        //index.find(phrase);
-        // index.sortIDFvalues();
-       // index.printTF();
         index.findParse(a);
 
 
