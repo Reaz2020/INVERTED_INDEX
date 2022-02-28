@@ -19,7 +19,7 @@ class Index {
         sources = new HashMap<Integer, String>();
         index = new HashMap<String, HashSet<Integer>>();
     }
-    public void buildIndex(String[] files) {
+    public void indexBuilding(String[] files) {
         int docNo = 1;
         int i = 0;
         // creating IDF and Inverted Index
