@@ -182,7 +182,7 @@ n is the number of documents that contain the term t among the data set*/
        // TF.forEach((k, v) -> System.out.println("TF Value for word  " + k + " = " + v));
 
     }
-    //reversing the arraylist to match list document wise,  matching  documnets + word //saving them as key value,
+    //reversing the arraylist to match list document wise,  matching  documnets + word //saving them as key value
     // sorting according to value and printing
     void findParse( String a ){
         Collections.reverse(TF_IDF_List);
@@ -243,5 +243,6 @@ n is the number of documents that contain the term t among the data set*/
             docNo++;
         }
     }
+
 
 }
