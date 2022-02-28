@@ -212,16 +212,15 @@ n is the number of documents that contain the term t among the data set*/
 
 
 
+        System.out.println("Found in-->");
         for (Object e : obj) {
-            System.out.println("Document no :"+((Map.Entry<Integer, Double>) e).getKey() + "  tf.idf value  "
-                    + ((Map.Entry<Integer, Double>) e).getValue());
+            System.out.println("Document no :"+((Map.Entry<Integer, Double>) e).getKey() + "  [with tf.idf value  "
+                    + ((Map.Entry<Integer, Double>) e).getValue()+"]");
 
         }
 
-        // printing value of the tf idf in every document
+        // printing document with each word and their tf idf values
         System.out.println();
-
-
         System.out.println("Documents ");
         for (int i = 0; i < TF_IDF_List.size(); i++) {
             System.out.println("Document "+(i+1)+":-----"+TF_IDF_List.get(i));
