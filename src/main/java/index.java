@@ -8,20 +8,12 @@ class Index {
 
 
 
-   // Map<Integer, String> tf_idf;
+
     ArrayList<Map<String, Double>> TF_IDF_List = new ArrayList();
-    ArrayList<Map<String, Double>> TF_IDF_ListChanging = new ArrayList();
     Map<Integer, String> sources;
     HashMap<String, HashSet<Integer>> index;
     Map<String, Double> IDF_forAllWords = new HashMap<>();
-    //Map<String, Double> TF_forAllWords = new HashMap<>();
-    // HashMap<String, Double> IDF = new HashMap<>();
-    // Map<String, Integer> newList = new HashMap<>();
-    //Map<String, Integer> wordsAndItsOccurnce = new HashMap<>();
     ArrayList<String> allWordsForALLdocuments = new ArrayList();
-    //HashMap<String, ArrayList<String>> myIndex = new HashMap<>();
-    // ArrayList<String> allWords = new ArrayList();
-    //int numberOfFiles = 0;
     int numbeRofDocumentsThatContainThePharseTerm = 0;
     Index() {
         sources = new HashMap<Integer, String>();
@@ -161,19 +153,13 @@ n is the number of documents that contain the term t among the data set*/
 
             }
         }TF_IDF_List.add(i,TF_IDF);
-       // Collections.reverse(TF_IDF_List);
+
 
 
        // System.out.println(" ---------------------------------------------------------- ");
         sortTF_IDFvalues(TF_IDF);
        // TF_IDF.forEach((k, v) -> System.out.println("TF_IDF Value for word  " + k + " = " + v));
     }
-
-    /*void reversingTF_DF_list(){
-       Collections.reverse(TF_IDF_List);
-    }*/
-
-
 
     void IDFc() {
         double numberOfDocHaveTheWord = 0;
@@ -235,6 +221,8 @@ n is the number of documents that contain the term t among the data set*/
         // printing value of the tf idf in every document
         System.out.println();
 
+
+        System.out.println("Documents ");
         for (int i = 0; i < TF_IDF_List.size(); i++) {
             System.out.println("Document "+(i+1)+":-----"+TF_IDF_List.get(i));
 
